@@ -1,0 +1,96 @@
+---
+title: "Input preprocessing"
+author: "Yunfei Ma"
+date: "12/1/2021"
+output: html_document
+---
+
+
+
+load the library:
+```{r}
+library(jpeg)
+library(colorspace)
+library(tidyverse)
+library(tools)
+library(magick)
+```
+
+Read all the picture files in source image:
+```{r}
+filename = list.files(pattern = "*.jpg")
+```
+
+
+set the number of rows and columns:
+```{r}
+row = 50
+col = 50
+```
+
+
+Calculate the average color of the image in source files:
+```{r}
+for (k in 1:length(filename))
+{
+  #load the image
+  img = readJPEG(filename[k])
+  
+  #get height and width of the image
+  height_of_image = dim(img)[1]
+  width_of_image = dim(img)[2]
+  
+  step_height = trunc(height_of_image / row)
+  step_width = trunc(width_of_image / col)
+  
+  #get rgb colors of the image
+  r = img[,,1]
+  g = img[,,2]
+  b = img[,,3]
+  
+  matrix_L = matrix(0,row,col)
+  matrix_U = matrix(0,row,col)
+  matrix_V = matrix(0,row,col)
+  
+   #create data frame for LUV color
+  for(i in seq(1,row))
+  {
+    for (ii in seq(step_height * (i-1) + 1, step_height * i))
+    {
+      x = RGB(r[ii,],g[ii,],b[ii,])
+      cord = coords(as(x,"LUV"))
+      
+      
+    }
+    
+    
+    
+    for(ii in seq(step_height * (i-1) + 1, step_height * i))
+    {
+      x = RGB(r[ii,],g[ii,],b[ii,])
+      cord = coords(as(x,"LUV"))
+      
+      for (j in seq(1,col))
+      {
+         matrix_L[i,j] = matrix_L[i,j] + sum(cord[(step_width * (j-1) + 1):(j*step_width), "L"])
+         matrix_U[i,j] = matrix_U[i,j] + sum(cord[(step_width * (j-1) + 1):(j*step_width), "U"])
+         matrix_V[i,j] = matrix_V[i,j] + sum(cord[(step_width * (j-1) + 1):(j*step_width), "V"])
+      }
+      
+    }
+  }
+  dev = as.vector(rep(step_width*step_height,row))
+  
+  matrix_L = matrix_L / dev
+  matrix_U = matrix_U / dev
+  matrix_V = matrix_V / dev
+  
+  
+  write.table(matrix_L,paste(file_path_sans_ext(filename[k]),"_l",".csv",sep = ""),row.names=FALSE,sep = ",")
+  write.table(matrix_U,paste(file_path_sans_ext(filename[k]),"_u",".csv",sep = ""),row.names=FALSE,sep = ",")
+  write.table(matrix_V,paste(file_path_sans_ext(filename[k]),"_v",".csv",sep = ""),row.names=FALSE,sep = ",")
+  
+  print(k)
+}
+```
+

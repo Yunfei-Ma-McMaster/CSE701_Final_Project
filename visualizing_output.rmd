@@ -1,0 +1,89 @@
+---
+title: "visualizing output"
+author: "Yunfei Ma"
+date: "12/3/2021"
+output: html_document
+---
+
+
+load the library:
+```{r}
+library(jpeg)
+library(colorspace)
+library(tidyverse)
+library(magick)
+library(tools)
+```
+
+read the paintings:
+```{r}
+paintings = read_csv("paintings.csv")
+names_of_paintings = paintings$Painting
+```
+set the row and columns:
+```{r}
+row = 50
+col = 50
+```
+
+Read all the picture files in source image:
+```{r}
+filename = list.files(path = "outputImageCSV/",pattern = "*.csv")
+```
+
+Remove all the previous file in the folder:
+```{r}
+pre_filename = list.files(path = "outputImages/", pattern = "*.jpg")
+for (i in 1:length(pre_filename))
+{
+  file.remove(paste("outputImages/", pre_filename[i], sep = ""))
+}
+```
+
+
+Resize the tile images:
+```{r}
+for(i in 1:length(names_of_paintings))
+{
+  img = image_read(paste("paintings/", names_of_paintings[i], ".jpg",sep = ""))
+  img = image_scale(img,"5x5!")
+  image_write(img,path = paste("paintings/tileimage_resize/", names_of_paintings[i], ".jpg", sep = ""), format = "jpg",quality = 100)
+}
+```
+
+
+Generate Photo Mosaics (takes some time to run the generation):
+```{r,warning=FALSE}
+#set the "matrix" for mosaic with a initial image
+img = image_read("paintings/tileimage_resize/Acrobate et jeune arlequin.jpg")
+input = rep(img,row*col)
+
+
+for(k in 1:length(filename))
+{
+  image_dir_csv_name = paste("outputImageCSV/",filename[k], sep = "")
+  tile_distribution_data = read_csv(image_dir_csv_name,col_names = FALSE)
+  
+  print(paste("Generating file: ","outputImages/", file_path_sans_ext(filename[k]), ".jpg", sep = ""))
+  #make the mosaic
+  for (i in 1:row)
+  {
+    for (j in 1:col)
+    {
+      img = image_read(paste("paintings/tileimage_resize/", 
+                             tile_distribution_data[i,j], ".jpg",sep = ""))
+      input[(i-1) * row + j] = img
+    }
+  }
+  
+  img = image_montage(input,tile = paste(row,"x",col,sep = ""),
+                      geometry = geometry_area(width = row,height = col, x_off = 0,y_off = 0))
+  
+  image_write(img, path = paste("outputImages/", file_path_sans_ext(filename[k]), ".jpg", sep = ""), format = "jpg")
+}
+```
+
+
+
+
+
