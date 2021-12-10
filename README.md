@@ -88,6 +88,17 @@ Woman III,Suprematist Composition,Suprematist Composition,Suprematist Compositio
 
 ```
 (a 50x50 table)
+Sample terminal output:
+```
+Successfully open the file [paintings.csv]  and [paintings_avg_color.csv] for loading tile images information!
+Successfully loaded the tileimage information into the program.
 
+Successfully open source image color space files for [Jack Ma]
+Successfully loading source image color space information for [Jack Ma]
+Successfully generate mosaic painting information for [Jack Ma] in [outputImageCSV/Jack Ma.csv]
+The market price of mosaic painting for [Jack Ma] is worth $197506272! WoW!
+
+Successfully generated all output files in folder [outputImageCSV]. To visualize the mosaic images, please run [visualizing_output.rmd]. The output images will be generated in folder [outputImages].
+```
 Sample output visualization: ![](/supplementary_readme/Jack_Ma.jpg)
 
