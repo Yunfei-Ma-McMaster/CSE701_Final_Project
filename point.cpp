@@ -13,7 +13,6 @@
 #include <string>
 #include "point.hpp"
 
-//default constructor make all entries 0s (0,0,0)
 template <uint32_t Dimension>
 Point<Dimension>::Point()
 {
@@ -23,7 +22,6 @@ Point<Dimension>::Point()
     }
 }
 
-//constructor with input entries
 template <uint32_t Dimension>
 Point<Dimension>::Point(double arr[Dimension])
 {
@@ -33,7 +31,6 @@ Point<Dimension>::Point(double arr[Dimension])
     }
 }
 
-//copy constructor
 template <uint32_t Dimension>
 Point<Dimension>::Point(const Point<Dimension> &another_point)
 {
@@ -43,7 +40,6 @@ Point<Dimension>::Point(const Point<Dimension> &another_point)
     }
 }
 
-//constructor for the first 3 entry for only 3 dimensional tasks
 template <uint32_t Dimension>
 Point<Dimension>::Point(double x, double y, double z)
 {
@@ -52,7 +48,6 @@ Point<Dimension>::Point(double x, double y, double z)
     this->entries[2] = z;
 }
 
-//assignment operator overload
 template <uint32_t Dimension>
 Point<Dimension> &Point<Dimension>::operator=(const Point<Dimension> &another_point)
 {
@@ -63,7 +58,6 @@ Point<Dimension> &Point<Dimension>::operator=(const Point<Dimension> &another_po
     return *this;
 }
 
-//operator for accessing a location at the point based on index without modifications
 template <uint32_t Dimension>
 double Point<Dimension>::operator[](uint32_t idx) const
 {
@@ -78,7 +72,6 @@ double Point<Dimension>::operator[](uint32_t idx) const
     }
 }
 
-//operator for accessing a location at the point based on index (pass by reference)
 template <uint32_t Dimension>
 double &Point<Dimension>::operator[](uint32_t idx)
 {
@@ -93,7 +86,6 @@ double &Point<Dimension>::operator[](uint32_t idx)
     }
 }
 
-//operator for checking if 2 points are the same
 template <uint32_t Dimension>
 bool Point<Dimension>::operator==(const Point<Dimension> another_point) const
 {
@@ -117,7 +109,6 @@ bool Point<Dimension>::operator!=(const Point<Dimension> another_point) const
     return !(*this == another_point);
 }
 
-//Important: operator for comparison <: a point is less than another point when there is compairion with the fist different entry, this is very helpful for the task of finding the closest match picture.
 template <uint32_t Dimension>
 bool Point<Dimension>::operator<(const Point<Dimension> another_point) const
 {
@@ -138,21 +129,18 @@ bool Point<Dimension>::operator<=(const Point<Dimension> another_point) const
     return (*this < another_point) or (*this == another_point);
 }
 
-//operator overload
 template <uint32_t Dimension>
 bool Point<Dimension>::operator>(const Point<Dimension> another_point) const
 {
     return !(*this < another_point);
 }
 
-//operator overload
 template <uint32_t Dimension>
 bool Point<Dimension>::operator>=(const Point<Dimension> another_point) const
 {
     return !(*this < another_point) or (*this == another_point);
 }
 
-//function to print the point
 template <uint32_t Dimension>
 string Point<Dimension>::print_point()
 {
@@ -165,7 +153,6 @@ string Point<Dimension>::print_point()
     return output;
 }
 
-//set function for modifying the point value
 template <uint32_t Dimension>
 void Point<Dimension>::set(uint32_t idx, double value)
 {
