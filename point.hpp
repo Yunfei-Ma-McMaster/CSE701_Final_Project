@@ -13,6 +13,7 @@
 #include <cstdarg>
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 /**
@@ -33,12 +34,11 @@ public:
     /**
      * @brief Construct a new Point object 
      * 
-     * @param arr the array of values for the point
+     * @param values the array of values for the point
      */
-    Point(double arr[Dimension]);
+    Point(vector<double> values);
 
-
-    Point(const Point & another_point);
+    Point(const Point &another_point);
 
     /**
      * @brief Construct a new Point object (for first 3 dimensions)
@@ -56,7 +56,7 @@ public:
      * @param another_point another point for assignment
      * @return Point& 
      */
-    Point& operator=(const Point& another_point);
+    Point &operator=(const Point &another_point);
 
     /**
      * @brief == operator overload for point class
@@ -144,5 +144,5 @@ private:
      * @brief the value entries for all the dimensions for the point
      * 
      */
-    double entries[Dimension];
+    vector<double> entries;
 };

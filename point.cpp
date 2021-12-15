@@ -11,49 +11,55 @@
 #include <cstdarg>
 #include <iostream>
 #include <string>
+#include <vector>
 #include "point.hpp"
 
 template <uint32_t Dimension>
 Point<Dimension>::Point()
 {
+    this->entries.resize(0);
     for (uint32_t i = 0; i < Dimension; i++)
     {
-        this->entries[i] = 0;
+        this->entries.push_back(0.0);
     }
 }
 
 template <uint32_t Dimension>
-Point<Dimension>::Point(double arr[Dimension])
+Point<Dimension>::Point(vector<double> values)
 {
+    this->entries.resize(0);
     for (uint32_t i = 0; i < Dimension; i++)
     {
-        this->entries[i] = arr[i];
+        this->entries.push_back(values[i]);
     }
 }
 
 template <uint32_t Dimension>
 Point<Dimension>::Point(const Point<Dimension> &another_point)
 {
+    this->entries.resize(0);
     for (unsigned i = 0; i < Dimension; i++)
     {
-        this->entries[i] = another_point.entries[i];
+        this->entries.push_back(another_point[i]);
     }
 }
 
 template <uint32_t Dimension>
 Point<Dimension>::Point(double x, double y, double z)
 {
-    this->entries[0] = x;
-    this->entries[1] = y;
-    this->entries[2] = z;
+    this->entries.resize(0);
+    this->entries.push_back(x);
+    this->entries.push_back(y);
+    this->entries.push_back(z);
 }
 
 template <uint32_t Dimension>
 Point<Dimension> &Point<Dimension>::operator=(const Point<Dimension> &another_point)
 {
+    this->entries.resize(0);
     for (uint32_t i = 0; i < Dimension; i++)
     {
-        this->entries[i] = another_point.entries[i];
+        this->entries.push_back(another_point.entries[i]);
     }
     return *this;
 }
