@@ -21,6 +21,7 @@
 #include "sourceimage.hpp"
 #include "tileimage.hpp"
 #include "kdtree.hpp"
+#include "number.hpp"
 
 /**
  * @brief the number of tile images for this program
@@ -34,61 +35,7 @@ const uint64_t TILE_NUM = 54;
  */
 const uint64_t CANVAS_WIDTH = 50;
 
-/**
- * @brief function for checking if a charater is digit. Input a charater and output boolean for yes or no
- * 
- * @param chr input charactor value
- * @return true if the input can be modified to a digit
- * @return false if the input cannot be modified to a digit
- */
-bool isDigit(const char &chr)
-{
-    if (chr >= '0' and chr <= '9')
-    {
-        return true;
-    }
-    return false;
-}
 
-/**
- * @brief check if the whole string contains only digits and maximum one decimal point, in other words, check it the string can be converted to a number. Input a string output a boolean for yes or no
- * 
- * @param word the input string 
- * @return true if the string can be converted to number
- * @return false if the string cannot be converted to number
- */
-bool isNumber(const string &word)
-{
-
-    // Flag for having decimal point
-    bool decimal_point_flag = false;
-    bool minus_sign_flag = false;
-
-    // Check for every char
-    for (char const &c : word)
-    {
-        if (isDigit(c))
-        {
-            continue;
-        }
-        else
-        {
-            if (c == '.' and decimal_point_flag == false)
-            {
-                decimal_point_flag = true;
-            }
-            else if (c == '-' and minus_sign_flag == false)
-            {
-                minus_sign_flag = true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-    return true;
-}
 
 /**
  * @brief delete all files in a directory
