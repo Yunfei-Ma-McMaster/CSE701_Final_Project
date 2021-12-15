@@ -18,6 +18,8 @@
 #include "point.hpp"
 #include "number.hpp"
 
+using namespace std;
+
 const uint64_t CANVAS_WIDTH = 50;
 SourceImage::SourceImage(string name, string filename_L, string filename_U, string filename_V)
 {
@@ -44,22 +46,22 @@ SourceImage::SourceImage(string name, string filename_L, string filename_U, stri
 
     if (!fin_L.is_open())
     {
-        std::cerr << "Error: Failed to open file : [" + filename_L + "] in the construction of source image. Please check if the name [" + name + "] from user input file [input.txt] is correct or exist in the database in folder [sourceimages]" << endl;
+        cerr << "Error: Failed to open file : [" + filename_L + "] in the construction of source image. Please check if the name [" + name + "] from user input file [input.txt] is correct or exist in the database in folder [sourceimages]" << endl;
         exit(1);
     }
     else if (!fin_U.is_open())
     {
-        std::cerr << "Error: Failed to open file : [" + filename_U + "] in the construction of source image. Please check if the name [" + name + "] from user input file [input.txt] is correct or exist in the data base in folder [sourceimages]" << endl;
+        cerr << "Error: Failed to open file : [" + filename_U + "] in the construction of source image. Please check if the name [" + name + "] from user input file [input.txt] is correct or exist in the data base in folder [sourceimages]" << endl;
         exit(1);
     }
     else if (!fin_V.is_open())
     {
-        std::cerr << "Error: Failed to open file : [" + filename_V + "] in the construction of source image. Please check if the name [" + name + "] from user input file [input.txt] is correct or exist in the data base in folder [sourceimages]" << endl;
+        cerr << "Error: Failed to open file : [" + filename_V + "] in the construction of source image. Please check if the name [" + name + "] from user input file [input.txt] is correct or exist in the data base in folder [sourceimages]" << endl;
         exit(1);
     }
     else
     {
-        std::cout << "Successfully open source image color space files for [" + name + "]" << endl;
+        cout << "Successfully open source image color space files for [" + name + "]" << endl;
 
         // Define the number of rows
         uint32_t row = 0;
@@ -100,24 +102,24 @@ SourceImage::SourceImage(string name, string filename_L, string filename_U, stri
                 // Check if the entry from the input is valid number
                 if (!isNumber(str_L))
                 {
-                    std::cerr << "Error: Invalid input [" + str_L + "] in file [sourceImage/" + filename_L + "] at row [" + to_string(row) + "] and column [" + to_string(col) + "]. Please use the validity of the file!" << endl;
+                    cerr << "Error: Invalid input [" + str_L + "] in file [sourceImage/" + filename_L + "] at row [" + to_string(row) + "] and column [" + to_string(col) + "]. Please use the validity of the file!" << endl;
                     exit(1);
                 }
                 else if (!isNumber(str_U))
                 {
-                    std::cerr << "Error: Invalid input [" +  str_U + "] in file [sourceImage/" + filename_U + "] at row [" + to_string(row) + "] and column [" + to_string(col) + "]. Please use the validity of the file!" << endl;
+                    cerr << "Error: Invalid input [" +  str_U + "] in file [sourceImage/" + filename_U + "] at row [" + to_string(row) + "] and column [" + to_string(col) + "]. Please use the validity of the file!" << endl;
                     exit(1);
                 }
                 else if (!isNumber(str_V))
                 {
-                    std::cerr << "Error: Invalid input [" + str_L + "] in file [sourceImage/" + filename_V + "] at row [" + to_string(row) + "] and column [" + to_string(col) + "]. Please use the validity of the file!" << endl;
+                    cerr << "Error: Invalid input [" + str_L + "] in file [sourceImage/" + filename_V + "] at row [" + to_string(row) + "] and column [" + to_string(col) + "]. Please use the validity of the file!" << endl;
                     exit(1);
                 }
 
                 // Hold the entry in the string to double
-                double entry_L = std::stod(str_L);
-                double entry_U = std::stod(str_U);
-                double entry_V = std::stod(str_V);
+                double entry_L = stod(str_L);
+                double entry_U = stod(str_U);
+                double entry_V = stod(str_V);
 
                 color_sub_spaces[row - 1][col] = Point<3>(entry_L, entry_U, entry_V);
 

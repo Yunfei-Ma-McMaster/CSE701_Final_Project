@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 
+using namespace std;
 /**
  * @brief Function for checking if a charater is digit. Input a charater and output boolean for yes or no
  * 
@@ -19,4 +20,4 @@ bool isDigit(const char &chr);
  * @return true If the string can be converted to number
  * @return false If the string cannot be converted to number
  */
-bool isNumber(const std::string &word);
+bool isNumber(const string &word);

@@ -23,6 +23,8 @@
 #include "kdtree.hpp"
 #include "number.hpp"
 
+using namespace std;
+
 /**
  * @brief the number of tile images for this program
  * 
@@ -42,11 +44,11 @@ const uint64_t CANVAS_WIDTH = 50;
  * 
  * @param dir_path the folder for the files to be deleted
  */
-void delete_dir_content(const std::filesystem::path &dir_path)
+void delete_dir_content(const filesystem::path &dir_path)
 {
-    for (auto &path : std::filesystem::directory_iterator(dir_path))
+    for (auto &path : filesystem::directory_iterator(dir_path))
     {
-        std::filesystem::remove_all(path);
+        filesystem::remove_all(path);
     }
 }
 
@@ -91,7 +93,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
     else
     {
         // Print the user-end info
-        std::cout << "Successfully open the file [" + filename_painting + "]  and [" + filename_avg_color + "] for loading tile images information!" << endl;
+        cout << "Successfully open the file [" + filename_painting + "]  and [" + filename_avg_color + "] for loading tile images information!" << endl;
 
         // Define the number of rows
         uint32_t row = 0;
@@ -171,7 +173,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
                     }
                     else
                     {
-                        price_of_tile = std::stoi(entry);
+                        price_of_tile = stoi(entry);
                     }
                 }
 
@@ -212,7 +214,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
                     else
                     {
                         // Hold the value for L
-                        color_space_L = std::stod(entry_avg_color);
+                        color_space_L = stod(entry_avg_color);
                     }
                 }
                 // Colorspace U
@@ -226,7 +228,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
                     else
                     {
                         // Hold the value for U
-                        color_space_U = std::stod(entry_avg_color);
+                        color_space_U = stod(entry_avg_color);
                     }
                 }
                 // Colorspace V
@@ -240,7 +242,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
                     else
                     {
                         // Hold the value for V
-                        color_space_V = std::stod(entry_avg_color);
+                        color_space_V = stod(entry_avg_color);
                     }
                 }
 
@@ -272,7 +274,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
         }
     }
 
-    std::cout << "Successfully loaded the tileimage information into the program. " << endl;
+    cout << "Successfully loaded the tileimage information into the program. " << endl;
     // Close the file
     fin.close();
 }
@@ -365,7 +367,7 @@ void generate_mosaic_csv(SourceImage &source, vector<TileImage> &tiles)
     }
     output_file.close();
 
-    std::cout << "Successfully generate mosaic painting information for [" + name_of_image + "] in [outputImageCSV/" + name_of_image + ".csv]" << endl;
+    cout << "Successfully generate mosaic painting information for [" + name_of_image + "] in [outputImageCSV/" + name_of_image + ".csv]" << endl;
 }
 
 /**
@@ -406,7 +408,7 @@ void image_mosaics_processing_from_input()
             string file_colorspace_v = "sourceimage/" + line + "_v.csv";
             SourceImage image(line, file_colorspace_l, file_colorspace_u, file_colorspace_v);
 
-            std::cout << "Successfully loading source image color space information for [" + line + "]" << endl;
+            cout << "Successfully loading source image color space information for [" + line + "]" << endl;
 
             sources.push_back(image);
 
@@ -414,14 +416,14 @@ void image_mosaics_processing_from_input()
             generate_mosaic_csv(image, tiles);
 
             // Print the image information
-            std::cout << "The market price of mosaic painting for [" + image.get_image_name() + "] is worth $" + to_string(image.get_image_value()) + "! WoW! \n"
+            cout << "The market price of mosaic painting for [" + image.get_image_name() + "] is worth $" + to_string(image.get_image_value()) + "! WoW! \n"
                       << endl;
         }
     }
 
-    std::cout << "\n"
+    cout << "\n"
               << endl;
-    std::cout << "Successfully generated all output files in folder [outputImageCSV]. To visualize the mosaic images, please run [visualizing_output.rmd]. The output images will be generated in folder [outputImages]." << endl;
+    cout << "Successfully generated all output files in folder [outputImageCSV]. To visualize the mosaic images, please run [visualizing_output.rmd]. The output images will be generated in folder [outputImages]." << endl;
 }
 
 int main()

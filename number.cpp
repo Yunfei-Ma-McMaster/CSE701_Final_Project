@@ -4,6 +4,8 @@
 
 #include"number.hpp"
 
+using namespace std;
+
 bool isDigit(const char &chr)
 {
     if (chr >= '0' and chr <= '9')
@@ -13,7 +15,7 @@ bool isDigit(const char &chr)
     return false;
 }
 
-bool isNumber(const std::string &word)
+bool isNumber(const string &word)
 {
 
     // Flag for having decimal point
