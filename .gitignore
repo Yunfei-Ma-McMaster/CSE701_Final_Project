@@ -5,8 +5,8 @@
 *.exe
 # Ignore the VSCode Counter
 *.VSCodeCounter/
-# ignore R Data and History
+# Ignore R Data and History
 .Rdata
 .Rhistory
-# ignore drmemory
+# Ignore drmemory
 drmemory/
