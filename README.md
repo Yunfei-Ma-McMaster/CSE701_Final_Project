@@ -102,3 +102,15 @@ Successfully generated all output files in folder [outputImageCSV]. To visualize
 ```
 Sample output visualization: ![](/supplementary_readme/Jack_Ma.jpg)
 
+
+## Compile and run the program
+
+This program can be run using GCC on windows. To compile this program, please use the following command in the terminal under the current directory for this program:
+```
+g++ *.cpp -std=c++20 -o mosaic.exe
+```
+
+To run the program:
+```
+./mosaic.exe
+```
