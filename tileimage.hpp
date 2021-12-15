@@ -20,19 +20,19 @@ class TileImage
 {
 private:
     /**
-     * @brief the name of the painting for tile image
+     * @brief The name of the painting for tile image
      * 
      */
     string name_of_painting;
 
     /**
-     * @brief the price of the painting tile image
+     * @brief The price of the painting tile image
      * 
      */
     uint32_t price_of_the_painting;
 
     /**
-     * @brief the average color of the painting in LUV color space
+     * @brief The average color of the painting in LUV color space
      * 
      */
     Point<3> average_color_of_the_painting;
@@ -56,42 +56,42 @@ public:
     /**
      * @brief Get the name of the tile image 
      * 
-     * @return string the name of the painting
+     * @return string The name of the painting
      */
     string get_name();
 
     /**
      * @brief Get the price of the tile image
      * 
-     * @return uint32_t the price of the tile image
+     * @return uint32_t The price of the tile image
      */
     uint32_t get_price();
 
     /**
      * @brief Get the LUV color space of the tile image
      * 
-     * @return Point<3>& the LUV color space of the average color of the painting
+     * @return Point<3>& The LUV color space of the average color of the painting
      */
     Point<3> &get_LUV_color();
 
     /**
      * @brief Set the name of the tile image
      * 
-     * @param name the name to be changed to
+     * @param name The name to be changed to
      */
     void set_name(string name);
 
     /**
      * @brief Set the price of the tile image
      * 
-     * @param price the price of the tile image
+     * @param price The price of the tile image
      */
     void set_price(uint32_t price);
 
     /**
      * @brief Set the LUV color space of the tile image
      * 
-     * @param point the LUV color space point
+     * @param point The LUV color space point
      */
     void set_LUV_color(const Point<3> &point);
 };

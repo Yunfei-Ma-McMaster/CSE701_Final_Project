@@ -112,7 +112,7 @@ public:
      * @brief [] operator overload to get the value at specific dimension
      * 
      * @param idx 
-     * @return the value of the dimension
+     * @return The value of the dimension
      */
     double operator[](uint32_t idx) const;
 
@@ -120,7 +120,7 @@ public:
      * @brief [] operator overload get the value for non-const version, it can be used to modify the points
      * 
      * @param idx 
-     * @return reference to the value of the Point at a dimension
+     * @return Reference to the value of the Point at a dimension
      */
     double &operator[](uint32_t idx);
 
@@ -133,7 +133,7 @@ public:
     void set(uint32_t idx, double value);
 
     /**
-     * @brief generat the string format output for the point 
+     * @brief Generate the string format output for the point 
      * 
      * @return the string of format of the point
      */
@@ -141,7 +141,7 @@ public:
 
 private:
     /**
-     * @brief the value entries for all the dimensions for the point
+     * @brief The value entries for all the dimensions for the point
      * 
      */
     vector<double> entries;
