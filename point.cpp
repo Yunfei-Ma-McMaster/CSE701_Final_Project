@@ -122,7 +122,6 @@ bool Point<Dimension>::operator<(const Point<Dimension> another_point) const
     return false;
 }
 
-//operator overload
 template <uint32_t Dimension>
 bool Point<Dimension>::operator<=(const Point<Dimension> another_point) const
 {
@@ -167,5 +166,5 @@ void Point<Dimension>::set(uint32_t idx, double value)
     }
 }
 
-//define the point dimension for 3d color space
+// Define the point dimension for 3d color space
 template class Point<3>;

@@ -8,3 +8,5 @@
 # ignore R Data and History
 .Rdata
 .Rhistory
+# ignore drmemory
+drmemory/

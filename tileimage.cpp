@@ -53,6 +53,5 @@ void TileImage::set_price(uint32_t price)
 
 void TileImage::set_LUV_color(const Point<3> &point)
 {
-    //add exception later
     this->average_color_of_the_painting = point;
 }

@@ -1,4 +1,4 @@
-# CSE701 Final Project: Generating world most expensive mosaic NFTs
+# CSE701 Final Project: Generating world's most expensive mosaic NFTs
 
 ## 1. Introduction
 As Elon Musk recently on twitter said: "NFTs are jpeging the dollar." Then I thought, instead of jpeging the dollars, jepging the world most expensive painting in a flexible manner may be a good ideas to catch the NFT trend. So pictures look like this: ![](/supplementary_readme/Elon_Musk.jpg) can be transform to mosaic art by stacking the worlds most expensive paintings together: ![](/supplementary_readme/Elon_Musk_mosaic.jpg) where each of the small tile on the mosaic canvas is a compressed image of one of the world's most expensive painting. Not only Elon Musk, every single person can have a picture and transform it into the a mosaic based on the worlds most expensive paintings. ![](/supplementary_readme/other_mosaics.png)

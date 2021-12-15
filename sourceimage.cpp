@@ -24,19 +24,19 @@ SourceImage::SourceImage(string name, string filename_L, string filename_U, stri
     this->name_of_the_image = name;
     this->total_value_of_the_image = 0;
 
-    //set the size of the vector first
+    // Set the size of the vector first
     this->color_sub_spaces.resize(size, vector<Point<3>>(size));
-    //create a pointer to the file
+    // Create a pointer to the file
     ifstream fin_L;
     ifstream fin_U;
     ifstream fin_V;
 
-    //line to hold the row
+    // Line to hold the row
     string line_L;
     string line_U;
     string line_V;
 
-    //open the file
+    // Open the file
     fin_L.open(filename_L);
     fin_U.open(filename_U);
     fin_V.open(filename_V);
@@ -60,28 +60,28 @@ SourceImage::SourceImage(string name, string filename_L, string filename_U, stri
     {
         std::cout << "Successfully open source image color space files for [" + name + "]" << endl;
 
-        //define the number of rows
+        // Define the number of rows
         uint32_t row = 0;
 
-        //iterator throught the file by lines
+        // Iterator throught the file by lines
         while ((!fin_L.eof()) and (!fin_U.eof()) and (!fin_V.eof()))
         {
-            //read the line
+            // Read the line
             getline(fin_L, line_L);
             getline(fin_U, line_U);
             getline(fin_V, line_V);
 
-            //if it is the first row, skip because it is just the variable names
+            // If it is the first row, skip because it is just the variable names
             if (row == 0)
             {
                 row++;
                 continue;
             }
 
-            //initialize the column number
+            // Initialize the column number
             uint32_t col = 0;
 
-            //split the string according to delimiter
+            // Split the string according to delimiter
             uint64_t start_L = 0;
             uint64_t end_L = line_L.find(',');
 
@@ -93,16 +93,15 @@ SourceImage::SourceImage(string name, string filename_L, string filename_U, stri
 
             while (start_L < line_L.size())
             {
-                //hold the entry in the string
+                // Hold the entry in the string
 
-                //cout << line_V.substr(start_V, end_V - start_V) << endl;
                 double entry_L = std::stod(line_L.substr(start_L, end_L - start_L));
                 double entry_U = std::stod(line_U.substr(start_U, end_U - start_U));
                 double entry_V = std::stod(line_V.substr(start_V, end_V - start_V));
 
                 color_sub_spaces[row - 1][col] = Point<3>(entry_L, entry_U, entry_V);
 
-                //change to next entry
+                // Change to next entry
                 start_L = end_L + 1;
                 start_U = end_U + 1;
                 start_V = end_V + 1;
@@ -125,7 +124,7 @@ SourceImage::SourceImage(string name, string filename_L, string filename_U, stri
         }
     }
 
-    //close the file
+    // Close the file
     fin_L.close();
     fin_U.close();
     fin_V.close();
