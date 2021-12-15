@@ -152,7 +152,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
                 {
                     if (entry == "" or entry == "NA")
                     {
-                        cerr << "Error: Missing or invalid input from [" + filename_painting + "] at row [" + to_string(row) + "]  and column + [" + to_string(col) + "](painting name)";
+                        cerr << "Error: Missing or NA input from [" + filename_painting + "] at row [" + to_string(row) + "]  and column + [" + to_string(col) + "](painting name)";
                         exit(1);
                     }
                     else
@@ -166,7 +166,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
                 {
                     if (!isNumber(entry))
                     {
-                        cerr << "Error : invalid input from [" + filename_painting + "] at row [" + to_string(row) + "] and column + [" + to_string(col) + "](adjusted price)";
+                        cerr << "Error : invalid input [" + entry + "] from [" + filename_painting + "] at row [" + to_string(row) + "] and column + [" + to_string(col) + "](adjusted price)";
                         exit(1);
                     }
                     else
@@ -206,7 +206,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
                 {
                     if (!isNumber(entry_avg_color))
                     {
-                        cerr << "Error : invalid input from [" + filename_avg_color + "] at row [" + to_string(row) + "] and column + [" + to_string(col_avg_color) + "](L)";
+                        cerr << "Error : invalid input [" + entry_avg_color + "] from [" + filename_avg_color + "] at row [" + to_string(row) + "] and column + [" + to_string(col_avg_color) + "](L)";
                         exit(1);
                     }
                     else
@@ -220,7 +220,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
                 {
                     if (!isNumber(entry_avg_color))
                     {
-                        cerr << "Error : invalid input from [" + filename_avg_color + "] at row [" + to_string(row) + "] and column + [" + to_string(col_avg_color) + "](U)";
+                        cerr << "Error : invalid input [" + entry_avg_color + "] from [" + filename_avg_color + "] at row [" + to_string(row) + "] and column + [" + to_string(col_avg_color) + "](U)";
                         exit(1);
                     }
                     else
@@ -234,7 +234,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
                 {
                     if (!isNumber(entry_avg_color))
                     {
-                        cerr << "Error : invalid input from [" + filename_avg_color + "] at row [" + to_string(row) + "] and column + [" + to_string(col_avg_color) + "](V)";
+                        cerr << "Error : invalid input [" + entry_avg_color + "] from [" + filename_avg_color + "] at row [" + to_string(row) + "] and column + [" + to_string(col_avg_color) + "](V)";
                         exit(1);
                     }
                     else
