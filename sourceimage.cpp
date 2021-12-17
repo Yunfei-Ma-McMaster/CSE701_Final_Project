@@ -35,9 +35,9 @@ SourceImage::SourceImage(string name, string filename_L, string filename_U, stri
     ifstream fin_V;
 
     // Line to hold the row
-    string line_L;
-    string line_U;
-    string line_V;
+    string line_L = "";
+    string line_U = "";
+    string line_V = "";
 
     // Open the file
     fin_L.open(filename_L);

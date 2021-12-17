@@ -73,8 +73,8 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
     ifstream fin_avg_color;
 
     // Line to hold the rows
-    string line;
-    string line_avg_color;
+    string line = "";
+    string line_avg_color = "";
 
     // Open the file
     fin.open(filename_painting);
