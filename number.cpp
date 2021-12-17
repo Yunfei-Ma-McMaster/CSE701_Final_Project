@@ -22,7 +22,7 @@ bool isNumber(const string &word)
     bool decimal_point_flag = false;
     bool minus_sign_flag = false;
     
-    // Flag for exponent regrading tiny numbers
+    // Flag for exponent regarding tiny numbers
     bool tiny_number_flag = false;
 
     // Check for every char

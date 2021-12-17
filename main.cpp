@@ -26,13 +26,13 @@
 using namespace std;
 
 /**
- * @brief the number of tile images for this program
+ * @brief The number of tile images for this program
  * 
  */
 const uint64_t TILE_NUM = 54;
 
 /**
- * @brief the canvas width for dividing the source image from input file is set to be 50x50
+ * @brief The canvas width for dividing the source image from input file is set to be 50x50
  * 
  */
 const uint64_t CANVAS_WIDTH = 50;
@@ -40,7 +40,7 @@ const uint64_t CANVAS_WIDTH = 50;
 
 
 /**
- * @brief delete all files in a directory
+ * @brief Delete all files in a directory
  * 
  * @param dir_path the folder for the files to be deleted
  */
@@ -53,7 +53,7 @@ void delete_dir_content(const filesystem::path &dir_path)
 }
 
 /**
- * @brief fill up the tile image information by reading csv files from the input
+ * @brief Fill up the tile image information by reading csv files from the input
  * 
  * @param filename_painting the input file location for painting/tile image csv file
  * @param filename_avg_color the input file location for painting LUV color space file
@@ -280,7 +280,7 @@ void read_csv_tileimage(string filename_painting, string filename_avg_color, vec
 }
 
 /**
- * @brief generate the mosaic csv file of all the source images from the tile images
+ * @brief Generate the mosaic csv file of all the source images from the tile images
  * 
  * @param source the source images for processing
  * @param tiles the tile images/paintings to generated the source image mosaics
@@ -371,7 +371,7 @@ void generate_mosaic_csv(SourceImage &source, vector<TileImage> &tiles)
 }
 
 /**
- * @brief processing the generation of the mosaic from reading the user inputs
+ * @brief Processing the generation of the mosaic from reading the user inputs
  * 
  */
 void image_mosaics_processing_from_input()
